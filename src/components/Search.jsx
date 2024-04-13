@@ -132,7 +132,7 @@ export default function Search({ setData , setWash, setSumm}) {
               headers : {
                 'Content-Type' : 'application/json',
                 'Authorization': `Bearer ${Cookie.get('uuid')}`
-              },
+              }, 
               body : JSON.stringify(formData)
            });
            const resData = await res.json();
