@@ -135,6 +135,7 @@ export default function Search({ setData , setWash, setSumm}) {
               },
               body : JSON.stringify(formData)
            });
+           const resData = await res.json();
            if(!res.ok){
             toast.error(resData.msg, {
                 position: "top-right",
@@ -151,7 +152,7 @@ export default function Search({ setData , setWash, setSumm}) {
             return;
            }
 
-           const resData = await res.json();
+           
            setObject({
             building: '',
             block: '',
