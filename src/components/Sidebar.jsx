@@ -5,13 +5,13 @@ export default function SideBar(){
           <div className="side">
             <ul>
                 <li className='p-1'>
-                    <NavLink to={'/assignment'} >Assign</NavLink>
+                    <NavLink to={'/admin/assignment'} >Assign</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/'} >Details</NavLink>
+                    <NavLink to={'/admin/details'} >Details</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/verify'} >Verify</NavLink>
+                    <NavLink to={'/admin/verify'} >Verify</NavLink>
                 </li>
             </ul>
           </div>

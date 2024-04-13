@@ -95,7 +95,7 @@ export default function Submit( {data, ids ,setData }) {
                           return updated;
                         });
                         handleClose();
-                        navigate('/verify');
+                        navigate('/admin/verify');
                   },5000);
                     
           }catch(err){

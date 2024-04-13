@@ -5,7 +5,7 @@ import { redirect } from 'react-router-dom';
 export function Check(){
       const token = Cookie.get('uuid');
       if(!token){
-        return redirect('/signin');
+        return redirect('/');
       }
       return null;
 }

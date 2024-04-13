@@ -17,9 +17,9 @@ export default function Header(){
     }
     const text = state ? 'block':'none'; 
     const handle1 = ()=>{
-       Cookie.set('uuid',null);
-       Cookie.set('name',null);
-       navigate('/signin');
+       Cookie.remove('uuid');
+       Cookie.remove('name');
+       navigate('/');
     }
     const [loading, setLoading] = useState(false);
     return (
@@ -52,16 +52,16 @@ export default function Header(){
                     <ul>
                       <li className="text-end content-end"><CloseIcon fontSize="large" onClick={handle} /></li>
                       <li className='p-3'>
-                          <NavLink to={'/assignment'} onClick={handle} >Assign</NavLink>
+                          <NavLink to={'/admin/assignment'} onClick={handle} >Assign</NavLink>
                       </li>
                       <li className='p-3'>
-                          <NavLink to={'/'} onClick={handle} >Details</NavLink>
+                          <NavLink to={'/admin/details'} onClick={handle} >Details</NavLink>
                       </li>
                       <li className='p-3'>
-                          <NavLink to={'/verify'} onClick={handle}>Verify</NavLink>
+                          <NavLink to={'/admin/verify'} onClick={handle}>Verify</NavLink>
                       </li>
                       <li className='p-3'>
-                          <NavLink to={'/signin'} onClick={handle1}>Logout</NavLink>
+                          <NavLink to={'/'} onClick={handle1}>Logout</NavLink>
                       </li>
                    </ul>
             </section>

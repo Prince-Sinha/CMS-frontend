@@ -49,7 +49,7 @@ export default function Signin() {
                 Cookie.set('uuid', resData.token);
                 Cookie.set('name',resData.name);
                 setLoading(prev=> !prev);
-                navigate('/');
+                navigate('/admin/details');
             }).catch((err) => {
                 toast.error(err, {
                     position: "top-right",

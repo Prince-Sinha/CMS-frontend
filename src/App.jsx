@@ -12,16 +12,16 @@ import Verify from './components/Verify'
 import Signin from './components/Signin'
 import { Check } from './hooks/Auth'
 const router = createBrowserRouter([
-  { path : '/', element : <Root />,
+  { path : '/admin', element : <Root />,
     id : 'root',
     children : [
-      {index:true , element : <Details /> ,loader : Check},
+      {path : 'details', element : <Details /> ,loader : Check},
       {path : 'assignment' , element : <Assignment />, loader : Check},
       {path : 'verify' , element : <Verify /> , loader: Check},
       
     ]
   },
-  {  path : '/signin', element : <Signin /> }
+  {  path : '/', element : <Signin /> }
   
 ])
 
