@@ -26,7 +26,7 @@ export default function Header(){
         <>
           <div id="header">
             
-             <img src="./logo.png" alt="MANIT-LOGO" />
+             <img src="logo.png" alt="MANIT-LOGO" />
              <div>
                 <div className="name-container">Maulana Azad National Institute of Technology</div>
              </div>
