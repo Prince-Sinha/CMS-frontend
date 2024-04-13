@@ -136,6 +136,7 @@ export default function Search({ setData , setWash, setSumm}) {
               body : JSON.stringify(formData)
            });
            const resData = await res.json();
+           console.log(resData);
            if(!res.ok){
             toast.error(resData.msg, {
                 position: "top-right",
@@ -147,6 +148,22 @@ export default function Search({ setData , setWash, setSumm}) {
                 progress: undefined,
                 theme: "light",
             });
+            setObject({
+                building: '',
+                block: '',
+                floor: '',
+                date : null,
+            });
+            setData(prev=>{
+                const updated = [{
+                    isSubmitted: true,
+                    location: {
+                        washrooms: [],
+                    },
+                    date: ''
+                }];
+                return updated;
+             });
             setLoading(prev => !prev);
             setWash(new Set());
             return;
@@ -180,6 +197,22 @@ export default function Search({ setData , setWash, setSumm}) {
 
        }catch(err){
         setLoading(prev => !prev);
+        setObject({
+            building: '',
+            block: '',
+            floor: '',
+            date : null,
+        });
+        setData(prev=>{
+            const updated = [{
+                isSubmitted: true,
+                location: {
+                    washrooms: [],
+                },
+                date: ''
+            }];
+            return updated;
+           });
         toast.error(resData.msg, {
             position: "top-right",
             autoClose: 5000,
@@ -199,6 +232,18 @@ export default function Search({ setData , setWash, setSumm}) {
           <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={loading}>
             <CircularProgress />
           </Backdrop>
+          <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+            />
 
             <Form className='filter' method='post' onSubmit={handleFilter}>
                 <FormControl sx={{ minWidth: '30%' }} required >
