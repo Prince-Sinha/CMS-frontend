@@ -154,6 +154,7 @@ export default function Search({ setData , setWash, setSumm}) {
                 floor: '',
                 date : null,
             });
+            setSumm([]);
             setData(prev=>{
                 const updated = [{
                     isSubmitted: true,
@@ -197,6 +198,7 @@ export default function Search({ setData , setWash, setSumm}) {
 
        }catch(err){
         setLoading(prev => !prev);
+        setSumm([]);
         setObject({
             building: '',
             block: '',
