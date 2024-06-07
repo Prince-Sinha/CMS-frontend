@@ -8,11 +8,15 @@ import Assignment from './components/Assignment'
 import Details from './components/Details'
 import {createBrowserRouter , RouterProvider} from 'react-router-dom';
 import Root from './pages/Root'
+import FloorSection from './pages/FloorSection'
+import ChooseG from './pages/ChooseG'
+import ChooseT from './pages/ChooseT'
 import Verify from './components/Verify'
+import Login from './components/Login'
 import Signin from './components/Signin'
-import { Check } from './hooks/Auth'
+import { Check , checkAuth } from './hooks/Auth'
 const router = createBrowserRouter([
-  { path : '/admin', element : <Root />,
+  { path : '/admin', element : <Root />, loader : checkAuth,
     id : 'root',
     children : [
       {path : 'details', element : <Details /> ,loader : Check},
@@ -21,7 +25,15 @@ const router = createBrowserRouter([
       
     ]
   },
-  {  path : '/', element : <Signin /> }
+  {  path : '/', element : <Signin /> },
+  { path : '/login' , element : <Login />},
+  {
+     path : '/:Id' , element : <FloorSection /> , loader : checkAuth,
+     children : [
+      { path : ':floorid', element : <ChooseG /> , loader : checkAuth },
+      { path : ':floorid/:gen',element: <ChooseT />, loader : checkAuth },
+     ]
+  },
   
 ])
 

@@ -9,3 +9,11 @@ export function Check(){
       }
       return null;
 }
+
+export function checkAuth(){
+    const token = localStorage.getItem('token');
+    if(token== null){
+        return redirect('/');
+    }
+    return null;
+}
