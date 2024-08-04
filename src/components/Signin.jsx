@@ -12,6 +12,7 @@ import Tab from '@mui/material/Tab';
 
 export default function Signin() {
     const navigate = useNavigate();
+
     const { signIn } = useAuth();
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ export default function Signin() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log("this is handleSUBMIT");
         setLoading(prev=> !prev);
 
         const form = new FormData(event.target);
@@ -38,7 +40,7 @@ export default function Signin() {
         })
             .then(async (res) => {
                 if (!res.ok) {
-                    toast.error('Invalid Emailid or Password', {
+                    toast.error('Invalid Email or Password', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -51,13 +53,17 @@ export default function Signin() {
                     setLoading(prev=> !prev);
                     return;
                 }
+               
                 const resData = await res.json();
                 signIn(resData);
+                console.log(resData);
                 
                 Cookie.set('uuid', resData.token);
                 Cookie.set('name',resData.name);
                 setLoading(prev=> !prev);
+                console.log("Navigating to /admin/details");
                 navigate('/admin/details');
+                
             }).catch((err) => {
                 toast.error(err, {
                     position: "top-right",

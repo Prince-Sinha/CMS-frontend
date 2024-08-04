@@ -16,7 +16,7 @@ import Login from './components/Login'
 import Signin from './components/Signin'
 import { Check , checkAuth } from './hooks/Auth'
 const router = createBrowserRouter([
-  { path : '/admin', element : <Root />, loader : checkAuth,
+  { path : '/admin', element : <Root />,
     id : 'root',
     children : [
       {path : 'details', element : <Details /> ,loader : Check},
