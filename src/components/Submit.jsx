@@ -47,7 +47,7 @@ export default function Submit( {data, ids ,setData }) {
            
            
             try{
-                    console.log('TRY');
+                    
                     const res = await fetch(`${path_name}/api/v1/admin/verify`,{
                       method : 'POST',
                       headers : {

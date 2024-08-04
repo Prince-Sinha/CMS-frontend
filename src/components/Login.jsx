@@ -22,7 +22,7 @@ export default function Login(){
             password : formData.password
         }
         try{
-            const res = await fetch('https://backend.ankitkumar143872.workers.dev/api/v1/user/login',{
+            const res = await fetch('https://backend.ankitkumar143872.workers.dev/api/v1/user/signin',{
                 method: e.target.method,
                 headers : {
                     'Content-Type' : 'application/json'
@@ -49,15 +49,15 @@ export default function Login(){
             const token = resData.token;
             const id = resData.id;
         
-            const floor=resData.floors.map(el=>{
-                const newObj={};
-                newObj.id = el.floor.id;
-                newObj.name = el.floor.floor_name;
-                newObj.washroom = el.washrooms;
-                return newObj;
-            });
-            const detail = JSON.stringify(floor);
-            localStorage.setItem('detail',detail);
+            // const floor=resData.floors.map((el,i)=>{
+            //     const newObj={};
+            //     newObj.id = el.floor.id;
+            //     newObj.name = el.floor.floor_name;
+            //     newObj.washroom = el.washrooms;
+            //     return newObj;
+            // });
+            // const detail = JSON.stringify(floor);
+            // localStorage.setItem('detail',detail);
             localStorage.setItem('name',name);
             localStorage.setItem('token',token);
             localStorage.setItem('id',id);

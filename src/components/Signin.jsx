@@ -24,7 +24,6 @@ export default function Signin() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("this is handleSUBMIT");
         setLoading(prev=> !prev);
 
         const form = new FormData(event.target);
@@ -56,7 +55,6 @@ export default function Signin() {
                
                 const resData = await res.json();
                 signIn(resData);
-                console.log(resData);
                 
                 Cookie.set('uuid', resData.token);
                 Cookie.set('name',resData.name);
