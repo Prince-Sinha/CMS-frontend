@@ -12,7 +12,7 @@ import FloorSection from "./pages/FloorSection";
 import ChooseG from "./pages/ChooseG";
 import ChooseT from "./pages/ChooseT";
 import Verify from "./components/Verify";
-import Login from "./components/Login";
+import LoginForm from "./components/LoginForm";
 import Signin from "./components/Signin";
 import { Check, checkAuth } from "./hooks/Auth";
 import ImageUpload from "./pages/ImageUpload";
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "/", element: <Signin /> },
-  { path: "/login", element: <Login /> },
+  { path: "/login", element: <LoginForm /> },
   { path: "/:Id", element: <FloorSection />},
   { path: "/:Id/:floorId", element: <ChooseG /> },
   { path: "/:Id/:floorId/:gender", element: <ChooseT />},
