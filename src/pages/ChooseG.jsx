@@ -3,9 +3,9 @@ import { useNavigate, useParams } from "react-router-dom"
 import Header from "../components/Header";
 export default function ChooseG(){
     const navigate = useNavigate();
-    const { Id , floorid } = useParams();
+    const { Id , floorId } = useParams();
     const handleChange = (gender)=>{
-        navigate(`/${Id}/${floorid}/${gender}`);
+        navigate(`/${Id}/${floorId}/${gender}`);
     }
     return (
         <>

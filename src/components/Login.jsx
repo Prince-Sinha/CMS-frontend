@@ -1,6 +1,7 @@
 import {IconButton,OutlinedInput,InputLabel,InputAdornment,FormControl,TextField, Select,MenuItem} from '@mui/material';
-import {Visibility,VisibilityOff} from '@mui/icons-material';
+import { Visibility,VisibilityOff} from '@mui/icons-material';
 import {useState} from 'react'
+import Cookie from "js-cookie";
 import { Form, json, redirect , useNavigate  } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -49,7 +50,7 @@ export default function Login(){
             const token = resData.token;
             const id = resData.id;
         
-            // const floor=resData.floors.map((el,i)=>{
+            // const floor=resData.floors.map((el)=>{
             //     const newObj={};
             //     newObj.id = el.floor.id;
             //     newObj.name = el.floor.floor_name;
@@ -58,9 +59,11 @@ export default function Login(){
             // });
             // const detail = JSON.stringify(floor);
             // localStorage.setItem('detail',detail);
-            localStorage.setItem('name',name);
-            localStorage.setItem('token',token);
-            localStorage.setItem('id',id);
+            // localStorage.setItem('name',name);
+            // localStorage.setItem('token',token);
+            // localStorage.setItem('id',id);
+            Cookie.set('uuid', token);
+            Cookie.set('name', name);
 
             navigate(`/${id}`);
 
