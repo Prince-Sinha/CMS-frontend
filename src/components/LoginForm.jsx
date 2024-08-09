@@ -7,13 +7,12 @@ import Cookie from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CircularProgress, Backdrop } from "@mui/material";
+import LabTabs from "./LabTab";
 
-
-export default function Signin() {
+export default function LoginForm() {
   const navigate = useNavigate();
 
   const { signIn } = useAuth();
-  const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
 
   const [value, setValue] = useState("one");
@@ -27,19 +26,16 @@ export default function Signin() {
     setLoading((prev) => !prev);
 
     const form = new FormData(event.target);
-    form.append("role", "1");
+    form.append("role", "2");
     const formData = Object.fromEntries(form.entries());
 
-    fetch(
-      `https://backend.ankitkumar143872.workers.dev/api/v1/user/signin`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-    )
+    fetch(`https://backend.ankitkumar143872.workers.dev/api/v1/user/signin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
       .then(async (res) => {
         if (!res.ok) {
           toast.error("Invalid Email or Password", {
@@ -57,13 +53,15 @@ export default function Signin() {
         }
 
         const resData = await res.json();
-        signIn(resData);
+        console.log(resData);
+        const name = resData.name;
+        const token = resData.token;
+        const id = resData.id;
 
-        Cookie.set("uuid", resData.token);
-        Cookie.set("name", resData.name);
-        setLoading((prev) => !prev);
-        console.log("Navigating to /admin/details");
-        navigate("/admin/details");
+        Cookie.set("uuid", token);
+        Cookie.set("name", name);
+        setLoading(prev => !prev);
+        navigate(`/${id}`);
       })
       .catch((err) => {
         toast.error(err, {
@@ -115,37 +113,37 @@ export default function Signin() {
             </p>
           </div>
         </div>
-        
-        <div className="account-summ account-form">
-          <Form className="form-signin" method="post" onSubmit={handleSubmit}>
-            <div>
-              <h1 style={{ fontSize: 20 }}>Login as supervisor</h1>
-            </div>
-            <TextField
-              sx={{ margin: 1 }}
-              fullWidth
-              id="outlined-basic"
-              name="username"
-              label="Mobile Number"
-              variant="outlined"
-            />
-            <TextField
-              sx={{ margin: 1 }}
-              id="outlined-password-input"
-              label="Password"
-              type="password"
-              name="password"
-              autoComplete="current-password"
-              fullWidth
-            />
-            <div>
-              <a href="/login">Login as cleaner</a>
-            </div>
 
-            <button type="submit" className="sign-btn">
-              Sign in
-            </button>
-          </Form>
+        <div className="account-summ account-form">
+
+            <Form className="form-signin" method="post" onSubmit={handleSubmit}>
+              <div>
+                <h1 style={{ fontSize: 20 }}>Login as cleaner</h1>
+              </div>
+              <TextField
+                sx={{ margin: 1 }}
+                fullWidth
+                id="outlined-basic"
+                name="username"
+                label="Mobile Number"
+                variant="outlined"
+              />
+              <TextField
+                sx={{ margin: 1 }}
+                id="outlined-password-input"
+                label="Password"
+                type="password"
+                name="password"
+                autoComplete="current-password"
+                fullWidth
+              />
+              <div>
+                <a href="/">Login as Supervisor</a>
+              </div>
+              <button type="submit" className="sign-btn">
+                Sign in
+              </button>
+            </Form>
         </div>
       </div>
     </>
