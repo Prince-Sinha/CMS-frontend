@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.20.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.15",
@@ -19,6 +21,8 @@
     "@mui/x-data-grid-pro": "^7.1.1",
     "@mui/x-date-pickers": "^7.1.1",
     "bootstrap": "^5.3.3",
+    "cloudinary": "^2.4.0",
+    "cloudinary-core": "^2.13.1",
     "dayjs": "^1.11.10",
     "js-cookie": "^3.0.5",
     "mdb-react-ui-kit": "^7.2.0",

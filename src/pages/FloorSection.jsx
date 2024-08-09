@@ -4,6 +4,7 @@ import Submit from "../components/Submit";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Cookie from "js-cookie";
+
 export default function FloorSection() {
   const [floors, setFloors] = useState([]);
   const { Id } = useParams();
@@ -54,7 +55,6 @@ export default function FloorSection() {
   }, []);
 
   const handleClick = (floor_id) => {
-    console.log("button clicked");
     navigate(`/${Id}/${floor_id}`);
   };
 
