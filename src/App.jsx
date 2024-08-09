@@ -15,6 +15,9 @@ import Verify from "./components/Verify";
 import Login from "./components/Login";
 import Signin from "./components/Signin";
 import { Check, checkAuth } from "./hooks/Auth";
+import ImageUpload from "./pages/ImageUpload";
+
+
 const router = createBrowserRouter([
   {
     path: "/admin",
@@ -31,14 +34,14 @@ const router = createBrowserRouter([
   { path: "/:Id", element: <FloorSection />},
   { path: "/:Id/:floorId", element: <ChooseG /> },
   { path: "/:Id/:floorId/:gender", element: <ChooseT />},
-  { path: "/:Id/:floorId/:gender/:Tid", element: <ChooseT />},
+  { path: "/:Id/:floorId/:gender/:Tnum/:Tid", element: <ImageUpload />},
 
 
 ]);
 
 function App() {
   const [count, setCount] = useState(0);
-
+  
   return (
     <>
       {/* <div>

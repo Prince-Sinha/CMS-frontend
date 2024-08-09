@@ -11,6 +11,7 @@ export default function ChooseT() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("this is useEffect from ChooseT");
     fetch(
       `https://backend.ankitkumar143872.workers.dev/api/v1/cleaner/get-washrooms`,
       {
@@ -37,7 +38,7 @@ export default function ChooseT() {
           });
           return;
         }
-        console.log(json.washrooms);
+
         setWashroomDetails(json.washrooms);
       })
       .catch((err) => {
@@ -49,20 +50,19 @@ export default function ChooseT() {
     washroom.washroom_name.startsWith(gender)
   );
 
-  const handleChange = (Tid) => {
-    console.log(Tid);
-    navigate(`/${Id}/${floorId}/${gender}/${Tid}`);
+  const handleClick = (Tid, index) => {
+    navigate(`/${Id}/${floorId}/${gender}/${index + 1}/${Tid}`);
   };
 
   return (
     <>
       <Header />
       <div className="container">
-        {washroomGenderList.map((el) => {
+        {washroomGenderList.map((el, index) => {
           return (
             <button
-              key={el.id}
-              onClick={() => handleChange(el.id)}
+              key={index}
+              onClick={() => handleClick(el.id, index)}
               className="btn"
             >
               {el.washroom_name}
